@@ -57,6 +57,10 @@ def generate_docs():
     checks = read_csv(abs_dir/'ABS回测汇总.csv')
     forecast = read_csv(abs_dir/'ABS年度三情景.csv')
     nchecks = read_csv(nev/'回测汇总.csv')
+    nev_forecasts = read_csv(nev/'三情景结果.csv')
+    elasticities = read_csv(nev/'弹性转换与隐含弹性.csv')
+    current_share = float(next(r['domestic_share'] for r in nev_forecasts if r['year']=='2027' and r['scenario']=='基准'))
+    current_infra = float(next(r['local_implied'] for r in elasticities if r['stage']=='2027年基准' and r['parameter']=='infrastructure_sales_elasticity'))
     methods = [r for r in checks if r['method']=='adaptive' and (r['lead_start']!='1' or r['horizon'] in ('12','24'))]
     abs_metrics = '\n'.join('|'+ '|'.join([r['lead_start']+'—'+r['lead_end'], '规模' if r['target']=='volume' else '项目数', r['origins'], f"{float(r['wape']):.2%}",f"{float(r['monthly_wape']):.2%}", f"{float(r['bias']):,.2f}"])+'|' for r in methods)
     abs_forecasts = '\n'.join(f"|{r['scenario']}|{r['year']}|{float(r['volume']):,.2f}|{float(r['projects']):,.2f}|" for r in forecast)
@@ -95,7 +99,7 @@ def generate_docs():
 
 ### 为什么补弹性转换
 
-弹性是局部比例响应，logit系数改变的是份额对数胜算，两者不同。补能B只影响选择份额时，`dln(D)/dln(B)=(1−p)γ`。所以销量弹性目标η应转为 `γ=η/(1−p₀)`；固定γ后，在未来更高份额处的隐含销量弹性会下降。原先直接填0.3时，未来基准份额约0.680处实际销量弹性只有约0.096，不能说仍为0.3。
+弹性是局部比例响应，logit系数改变的是份额对数胜算，两者不同。补能B只影响选择份额时，`dln(D)/dln(B)=(1−p)γ`。所以销量弹性目标η应转为 `γ=η/(1−p₀)`；固定γ后，在未来更高份额处的隐含销量弹性会下降。旧版本基准示例的份额约0.680，直接填γ=0.3只隐含约0.096的销量弹性，不能说仍为0.3。该示例不是当前版基准：当前2027基准份额为{current_share:.6f}，转换后的固定γ约0.724，对应当期隐含补能销量弹性{current_infra:.6f}；这些是模型内局部导数，并非本地实证估计。
 
 购价弹性还需经过TCO。令 `κN=dln(TCO_N)/dln(购价_N)`、`κI=dln(TCO_I)/dln(购价_I)`，按桥接锚点权重w₀计算总体成本导数κM。市场TCO弹性 `εC=ε市场购价/κM`；选择系数 `β=(εC×w₀−ε新能源购价/κN)/(1−p₀)`。当前γ约0.724、β约2.478，但它们是转换后的模型系数，不能重新当作销量弹性。数值导数使用同一税费与残值设置。
 
@@ -104,6 +108,8 @@ def generate_docs():
 ### 数据与验证证据
 
 目前月度目标为{ns['monthly_rows']}个月、四条同口径序列，{ns['monthly_derived_rows']}个月由累计差分得到；另有{ns['auxiliary_observations']}条辅助观察。月度发布值与独立年度口径有{ns['monthly_reconciliation_flags']}项差异超过舍入范围，保留差异，没有强制缩放对齐。数据列很多不等于可用需求样本很多；短序列、存量、产量与公司销量不能全部塞入需求回归。
+
+原始2015—2025年有11年总体口径历史，当前2021—2025年五年用于国内／出口分支参照，这是口径和用途的变化，不能描述为年度样本一直增加。57个月月度序列目前主要用于目标核对、简单基线回测及年／月对账，前瞻情景核心仍由年度参照校准，尚未形成使用全部月度宏观驱动的动态回归。
 
 一年期年度参照链的分支结果如下（单位误差为万辆）：
 
@@ -155,9 +161,11 @@ def generate_docs():
 
 ## 6. 从最初版到现在
 
-原始小组已有数据、预测CSV、快照和提示词。随后先增加可操作运行和扩大回测，再规范任务卡与企业条件核算；接着把国内与出口拆开，引入前瞻收入、相对成本、补能、政策及海外机制。对照同学版本后强化需求主体、分层输入和证据时间。用户又升级数据与参数，我们复核后增加月度入口、弹性转换、分支抵消诊断和唯一参数源。最后将ABS从可行性论证落到实际适配器、验证、工时核算与统一项目维护。详细变化见[迭代记录](../CHANGELOG.md)。
+原始小组已有经济机制、数据规则、11年总体历史、预测CSV、快照和提示词，实际量化主要采用总体份额趋势。随后先增加可操作运行和扩大回测，再规范任务卡与企业条件核算；接着把国内与出口拆开，将收入、相对成本、补能、政策及海外机制落实到可执行的条件计算。对照同学版本后强化需求主体、分层输入和证据时间。用户又升级数据与参数，我们复核后增加月度入口、弹性转换、分支抵消诊断和唯一参数源。最后将ABS从可行性论证落到实际适配器、验证、工时核算与统一项目维护。详细变化见[迭代记录](../CHANGELOG.md)。
 
 这不是从一开始就有的完整因果模型。没有事后伪造普通AI初版、真实同学试用、人工贡献比例或早期Git提交。今后的修改可用真实Git提交和验证记录追踪。
+
+不同版本回测的目标、时期和提前期不同，不能用原版约3.4%与当前总量1.32%直接宣称精度持续提升；当前总量还存在分支误差抵消。已经改善的是可运行性、口径、机制透明度和可复核性，完整前瞻预测的表现仍待未来实际结果验证。
 
 ## 7. 对照老师评分表怎样展示
 
@@ -206,6 +214,8 @@ def generate_docs():
 
 我们有五年年度参照、57个月月度目标及辅助数据，但序列性质各不相同。产量不是需求，充电桩不是销量。四个月是累计差分，有12项年／月汇总差异，保留了来源和未解决的问题。
 
+原始材料有11年总体历史，五年是后来国内／出口分支参照的窗口，并非年度样本一路变多；月度序列主要用于核对与基线验证，尚未全部训练进前瞻动态回归。
+
 年度总量回测WAPE约1.32%，国内约7.07%，出口约36.21%，这是高估与低估抵消的例子，所以总量成绩不能代表两个业务分支可靠。网格的几千条记录是参数压力计算，不是几千个历史样本。
 
 ## 第5—6分钟：ABS迁移与验证
@@ -245,6 +255,15 @@ def generate_docs():
     (docs/'课堂讲稿.md').write_text(lecture, encoding='utf-8')
     (docs/'课堂讲稿.html').write_text(render_markdown(lecture), encoding='utf-8')
     (ROOT/'开始使用.html').write_text('''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>开始使用行业需求预测Skill</title><style>body{margin:0;background:#f3f6f8;color:#213b53;font:17px/1.85 "Microsoft YaHei",sans-serif}main{max-width:1000px;margin:auto;padding:40px 24px}h1{font-size:36px}h2{margin-top:36px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}.card{background:white;border:1px solid #d4e0e8;border-radius:12px;padding:24px}.button{display:block;background:#176f81;color:white;text-decoration:none;padding:12px 18px;border-radius:7px;margin-top:16px}a{color:#076d81}small{font-size:14px;color:#526b7d}.note{background:#e3eff1;padding:16px;border-left:4px solid #176f81}@media(max-width:600px){main{padding:20px 16px}h1{font-size:28px}}</style><main><p>Industry Demand Forecasting &amp; Planning Assistant</p><h1>行业需求预测与经营计划助手</h1><p>一个Skill，新能源汽车与ABS两个可运行模块。课堂信息截止：2026年11月3日。</p><div class="grid"><section class="card"><h2>新能源汽车</h2><p>国内与出口分开预测，解释收入、相对成本、补能、政策与海外条件，再做销售与产能条件核算。</p><a class="button" href="运行结果/新能源汽车/需求预测与经营预案.html">查看需求与经营报告</a><small><a href="教学演示/新能源汽车/需求预测与经营预案.html">查看教学企业参数演示</a></small></section><section class="card"><h2>ABS融资活动</h2><p>按项目数×单均规模解释新增备案活动，比较历史基线，并做项目机会、费用和工时条件核算。</p><a class="button" href="运行结果/ABS/ABS融资活动预测与业务预案.html">查看ABS报告与验证</a><small><a href="教学演示/ABS/ABS融资活动预测与业务预案.html">查看教学企业参数演示</a></small></section></div><h2>自己运行三步</h2><ol><li>在下载后的 demand-forecast 文件夹中，双击“选择行业运行.cmd”。其他系统按README中的Python命令运行。</li><li>选择行业。普通模式保留真实企业数据缺口；教学模式用明确标记的假设演示核算。</li><li>报告会自动打开，每次结果保存到新的“运行记录”目录；同时生成输入快照、回测明细、汇总和运行状态。</li></ol><p>修改前先复制一份输入。新能源汽车弹性、未来路径和企业参数分别维护；ABS场景在 abs-settings.json 中修改。不要只手改报告数字。</p><div class="note">能计算，不代表所有经济参数都被实证识别，也不代表企业已批准方案。缺少真实企业输入时给条件核算，教学数值不能当作订单或成本事实。</div><h2>课堂汇报与维护</h2><p><a href="docs/汇报说明.html">阅读计算原理、逐步改进、经济学理论和不足</a></p><p><a href="docs/课堂讲稿.html">阅读8—10分钟讲稿与答辩准备</a></p><p><a href="docs/验证记录.md">查看已完成的验证记录</a> · <a href="README.md">完整使用说明</a> · <a href="demand-forecast/SKILL.md">Skill入口</a></p><p><a href="https://github.com/leojoanyxl-ai/demand-forecast-skill">GitHub私有仓库：后续修改入口</a></p></main></html>''', encoding='utf-8')
+    for manual_name in ('组员分享要点', '维护交接'):
+        manual = (docs/(manual_name+'.md')).read_text(encoding='utf-8')
+        rendered = render_markdown(manual).replace('<title>行业需求预测Skill汇报说明</title>', '<title>'+html.escape(manual_name)+'</title>')
+        for other in ('组员分享要点', '维护交接'):
+            rendered = rendered.replace('href="'+other+'.md"', 'href="'+other+'.html"')
+        (docs/(manual_name+'.html')).write_text(rendered, encoding='utf-8')
+    landing_path = ROOT/'开始使用.html'
+    landing = landing_path.read_text(encoding='utf-8').replace('<h2>课堂汇报与维护</h2>', '<h2>课堂汇报与维护</h2><p><a href="docs/组员分享要点.html">先看给组员的分享要点</a> · <a href="docs/维护交接.html">后续修改与维护交接</a></p>')
+    landing_path.write_text(landing, encoding='utf-8')
 
 
 def source_files():
