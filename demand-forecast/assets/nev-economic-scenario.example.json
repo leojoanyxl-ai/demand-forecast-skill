@@ -1,0 +1,272 @@
+{
+  "as_of": "2026-11-03",
+  "scope": "全国厂家新能源销量，含出口；国内为同口径总量减出口；单位万辆",
+  "model_status": "模型结构及成本/政策示例；必须经run_full.py读取公开数据与统一参数表后计算",
+  "parameters": {
+    "income_elasticity": {
+      "meaning": "国内总汽车需求对实际购买力的条件弹性",
+      "evidence": "结构字段；值由economic-parameters.json经统一入口转换，不在此维护第二份数值"
+    },
+    "total_auto_cost_elasticity": {
+      "meaning": "国内总汽车需求对总体实际成本指数的条件弹性",
+      "evidence": "结构字段；值由economic-parameters.json经统一入口转换，不在此维护第二份数值"
+    },
+    "relative_cost_odds_coefficient": {
+      "meaning": "新能源相对成本优势对份额log-odds的系数，不是新能源自身价格弹性",
+      "evidence": "结构字段；值由economic-parameters.json经统一入口转换，不在此维护第二份数值"
+    },
+    "infrastructure_odds_coefficient": {
+      "meaning": "未货币化补能便利偏离参照对份额log-odds的系数",
+      "evidence": "结构字段；值由economic-parameters.json经统一入口转换，不在此维护第二份数值"
+    },
+    "foreign_demand_elasticity": {
+      "meaning": "海外需求规模的条件弹性",
+      "evidence": "结构字段；值由economic-parameters.json经统一入口转换，不在此维护第二份数值"
+    },
+    "export_price_elasticity": {
+      "meaning": "相对海外竞品的到岸价格条件弹性",
+      "evidence": "结构字段；值由economic-parameters.json经统一入口转换，不在此维护第二份数值"
+    }
+  },
+  "cost_example": {
+    "nature": "代表乘用车的成本示例，不是已观测行业均价；全行业应用须验证车型/商用车权重和代表性",
+    "price_basis": "以2026年价格表示的实际值；税费先按当年名义价及上限计算再折回",
+    "nev_price_real": 160000,
+    "ice_price_real": 140000,
+    "nev_annual_use_real": 5000,
+    "ice_annual_use_real": 11000,
+    "nev_residual_real": 40000,
+    "ice_residual_real": 45000,
+    "holding_years": 5,
+    "real_discount_rate": 0.05,
+    "vat_rate": 0.13,
+    "purchase_tax_rate": 0.1,
+    "nev_relief_cap_nominal": 15000,
+    "eligibility": "示例车型符合减免目录条件；未估计全行业资格覆盖"
+  },
+  "export_cost_example": {
+    "nature": "示例单车基数与价格，不是官方平均出口价；简化表示退税收入变化，不是完整企业税务测算",
+    "eligible_tax_base_real": 200000,
+    "landed_price_real_before_change": 200000
+  },
+  "export_rebate_policy": {
+    "old_rate": 0.13,
+    "new_rate": 0.09,
+    "effective_date": "2027-04-01",
+    "affected_export_weight_2027": 0.75,
+    "weight_evidence": "假设各月出口均匀，故4—12月占9/12；不是已观测未来分布",
+    "scope_evidence": "官方附件按商品代码适用，适用比例另为规划假设",
+    "source": "https://szs.mof.gov.cn/zhengcefabu/202610/t20261012_4002592.htm"
+  },
+  "reference_path": {
+    "nev_real_price_growth": [
+      -0.03,
+      -0.03
+    ],
+    "ice_real_price_growth": [
+      -0.01,
+      -0.01
+    ],
+    "infrastructure_growth": [
+      0.15,
+      0.15
+    ],
+    "nev_tax_relief": [
+      0.5,
+      0.5
+    ],
+    "meaning": "国内份额描述性趋势所配套的明确参照路径；2028半征仅为参照假设，不是已宣布接续。份额只叠加相对该路径的新偏离，不把完整降本/基建增长重复加到趋势上。"
+  },
+  "scenarios": [
+    {
+      "name": "悲观",
+      "path_evidence": "未来条件演示，非官方预测；2027已知税制保持，2028税制为条件分支",
+      "real_income_growth": [
+        0.02,
+        0.02
+      ],
+      "inflation_growth": [
+        0,
+        0
+      ],
+      "nev_real_price_growth": [
+        0,
+        0
+      ],
+      "ice_real_price_growth": [
+        0,
+        0
+      ],
+      "infrastructure_growth": [
+        0.08,
+        0.08
+      ],
+      "foreign_demand_growth": [
+        0,
+        -0.02
+      ],
+      "export_price_pass_through": 1,
+      "rebate_eligible_fraction": 0.8,
+      "nev_tax_relief": [
+        0.5,
+        0
+      ],
+      "financing_quantity_factor": [
+        0.98,
+        0.96
+      ],
+      "nonprice_export_access_factor": [
+        0.9,
+        0.9
+      ],
+      "extra_technology_logodds": [
+        -0.03,
+        -0.06
+      ],
+      "pure_timing_transfer_10k": [
+        0,
+        0
+      ],
+      "export_quote_real_growth_before_rebate": [
+        0.02,
+        0.02
+      ],
+      "fx_foreign_per_rmb_growth": [
+        0,
+        0
+      ],
+      "foreign_competitor_price_growth": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "基准",
+      "path_evidence": "未来条件演示，非官方预测；2027已知税制保持，2028税制为条件分支",
+      "real_income_growth": [
+        0.04,
+        0.04
+      ],
+      "inflation_growth": [
+        0,
+        0
+      ],
+      "nev_real_price_growth": [
+        -0.03,
+        -0.03
+      ],
+      "ice_real_price_growth": [
+        -0.01,
+        -0.01
+      ],
+      "infrastructure_growth": [
+        0.15,
+        0.15
+      ],
+      "foreign_demand_growth": [
+        0.04,
+        0.04
+      ],
+      "export_price_pass_through": 0.5,
+      "rebate_eligible_fraction": 0.8,
+      "nev_tax_relief": [
+        0.5,
+        0.5
+      ],
+      "financing_quantity_factor": [
+        1,
+        1
+      ],
+      "nonprice_export_access_factor": [
+        1,
+        1
+      ],
+      "extra_technology_logodds": [
+        0,
+        0
+      ],
+      "pure_timing_transfer_10k": [
+        0,
+        0
+      ],
+      "export_quote_real_growth_before_rebate": [
+        0,
+        0
+      ],
+      "fx_foreign_per_rmb_growth": [
+        0,
+        0
+      ],
+      "foreign_competitor_price_growth": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "乐观",
+      "path_evidence": "未来条件演示，非官方预测；2027已知税制保持，2028税制为条件分支",
+      "real_income_growth": [
+        0.06,
+        0.05
+      ],
+      "inflation_growth": [
+        0,
+        0
+      ],
+      "nev_real_price_growth": [
+        -0.05,
+        -0.05
+      ],
+      "ice_real_price_growth": [
+        -0.01,
+        -0.01
+      ],
+      "infrastructure_growth": [
+        0.22,
+        0.2
+      ],
+      "foreign_demand_growth": [
+        0.08,
+        0.07
+      ],
+      "export_price_pass_through": 0.2,
+      "rebate_eligible_fraction": 0.8,
+      "nev_tax_relief": [
+        0.5,
+        0.5
+      ],
+      "financing_quantity_factor": [
+        1.02,
+        1.03
+      ],
+      "nonprice_export_access_factor": [
+        1.03,
+        1.03
+      ],
+      "extra_technology_logodds": [
+        0.04,
+        0.08
+      ],
+      "pure_timing_transfer_10k": [
+        0,
+        0
+      ],
+      "export_quote_real_growth_before_rebate": [
+        -0.02,
+        -0.02
+      ],
+      "fx_foreign_per_rmb_growth": [
+        0,
+        0
+      ],
+      "foreign_competitor_price_growth": [
+        0,
+        0
+      ]
+    }
+  ],
+  "source_notes": [
+    "行为参数以economic-parameters.json为准；年度数据以nev-evidence.json为准；月度与辅助数据分别读取规范化CSV。",
+    "成本与税基仍是代表性演示；政策覆盖、生效月份及价格传递需独立核实。"
+  ]
+}

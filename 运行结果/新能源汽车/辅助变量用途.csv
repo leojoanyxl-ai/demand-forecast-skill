@@ -1,0 +1,3 @@
+﻿metric,n,first,last,role,modeling_status,historical_driver_validation
+nev_production,149,2014-04,2026-09,供需校验，不替代销量,供需校验，不作需求目标,逐期发布日期未提供，未做实时驱动回测
+public_chargers_stock,128,2016-02,2026-09,补能条件参照，未识别因果,仅用于前瞻补能条件参照，不声称已估计弹性,逐期发布日期未提供，未做实时驱动回测

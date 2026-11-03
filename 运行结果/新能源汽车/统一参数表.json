@@ -1,0 +1,92 @@
+{
+  "version": "unified-20261103",
+  "anchor": "2026国内桥接份额与代表车型成本；转换依赖锚点，未来隐含弹性随份额变化",
+  "status": "校准目标，不是全部可比的本样本因果估计；文献不匹配部分保留条件性质",
+  "parameters": {
+    "income_elasticity": {
+      "central": 2.5,
+      "range": [
+        1,
+        4
+      ],
+      "grid": [
+        1,
+        2.5,
+        4
+      ],
+      "source": "https://doi.org/10.1086/725910",
+      "interpretation": "中国城市2005—2017新车登记收入弹性约2.5；1和4是迁移压力界，不是置信界"
+    },
+    "market_purchase_price_elasticity": {
+      "central": -0.5,
+      "range": [
+        -0.84,
+        -0.2
+      ],
+      "grid": [
+        -0.84,
+        -0.5,
+        -0.2
+      ],
+      "source": "https://www.rff.org/documents/4120/WP_23-33.pdf",
+      "interpretation": "美国新车购价弹性量级；通过代表车型购价到TCO导数转换为本模型成本系数。异质收入组范围不是中国估计区间"
+    },
+    "nev_purchase_price_elasticity": {
+      "central": -1.4,
+      "range": [
+        -2.67,
+        -1.4
+      ],
+      "grid": [
+        -2.67,
+        -2,
+        -1.4
+      ],
+      "source": "https://www.congress.gov/crs-product/IF13089",
+      "interpretation": "沿用接收版所列EV文献量级的规划校准目标；本轮原机构页受访问限制，未独立核实该数值范围，不称已核经验估计。不能直接当logit系数，转换计入M响应与购价/TCO传导，样本迁移仍待核"
+    },
+    "infrastructure_sales_elasticity": {
+      "central": 0.3,
+      "range": [
+        0.22,
+        0.85
+      ],
+      "grid": [
+        0.22,
+        0.3,
+        0.85
+      ],
+      "source": "https://documents1.worldbank.org/curated/en/225111639490843204/txt/The-Global-Diffusion-of-Electric-Vehicles-Lessons-from-the-First-Decade.txt",
+      "interpretation": "0.3为相关文献量级下的规划目标，世界银行0.32出自OLS结果；0.22至0.85只是迁移压力范围，不能称统一因果区间。gamma=目标销量弹性/(1-p锚点)"
+    },
+    "foreign_demand_elasticity": {
+      "central": 1,
+      "range": [
+        0.8,
+        1.5
+      ],
+      "grid": [
+        0.8,
+        1,
+        1.5
+      ],
+      "source": "https://www.imf.org/external/pubs/ft/wp/1999/wp9974.pdf",
+      "interpretation": "加总贸易文献量级下的海外需求代理压力弹性；海外终端市场与国外收入不是同一指标，保持条件设定"
+    },
+    "export_price_elasticity": {
+      "central": -1.5,
+      "range": [
+        -5,
+        -1.2
+      ],
+      "grid": [
+        -5,
+        -3.1,
+        -1.5,
+        -1.2
+      ],
+      "source": "https://www.usitc.gov/publications/332/working_papers/phillips_2024_04_a_elasticities.pdf",
+      "interpretation": "相对到岸价的条件压力弹性；交通部门Armington替代弹性仅提供量级背景，不直接识别中国新能源出口需求系数"
+    }
+  }
+}

@@ -1,0 +1,4 @@
+period,scenario,quantity_unit,domestic_demand,exports,domestic_service_ratio,domestic_share,export_service_ratio,export_share,opening_inventory,target_inventory,other_net_receipts,effective_capacity,data_nature,assumption_basis
+2027,悲观,万辆,90,10,1,0.02,1,0.01,0.4,0.3,0.1,2,教学假设,仅验证国内与出口及经营核算；不是行业预测
+2027,基准,万辆,100,20,1,0.02,1,0.01,0.4,0.3,0.1,2,教学假设,仅验证国内与出口及经营核算；不是行业预测
+2027,乐观,万辆,110,30,1,0.02,1,0.01,0.4,0.3,0.1,2,教学假设,仅验证国内与出口及经营核算；不是行业预测

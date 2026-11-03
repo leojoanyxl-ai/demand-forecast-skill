@@ -1,0 +1,79 @@
+{
+  "pipeline": "completed",
+  "industry": "abs",
+  "as_of": "2026-11-03",
+  "history_months": 81,
+  "forecast_months_per_scenario": 27,
+  "selected_model": "mean12",
+  "selection_scores": [
+    {
+      "model": "naive",
+      "wape": 0.22109975887362346,
+      "monthly_wape": 0.2890616926688593,
+      "origins": 46
+    },
+    {
+      "model": "seasonal",
+      "wape": 0.11852422774195268,
+      "monthly_wape": 0.25904514149520735,
+      "origins": 46
+    },
+    {
+      "model": "mean12",
+      "wape": 0.11852422774195268,
+      "monthly_wape": 0.21570898897854812,
+      "origins": 46
+    },
+    {
+      "model": "count_size",
+      "wape": 0.11852422774195268,
+      "monthly_wape": 0.23348249862552647,
+      "origins": 46
+    }
+  ],
+  "annual_scenarios": 6,
+  "backtest_rows": 1220,
+  "forecast_validation": "当前版本回顾性伪滚动；嵌套选模规则已比较；前瞻经济参数、发布日期实时回放及情景尚未验证",
+  "business_acceptance": "尚未验收；缺企业实际管线、工时、份额、费用与风险容忍度",
+  "company_states": [
+    "needs_input",
+    "needs_input",
+    "needs_input",
+    "needs_input",
+    "needs_input",
+    "needs_input"
+  ],
+  "drivers": [
+    {
+      "name": "融资相对全成本",
+      "mechanism": "ABS利率＋分层增信及服务费用与同期限银行贷款／债券成本比较，影响原始权益人的融资方式选择",
+      "needed": "按基础资产、评级、期限匹配的月度发行利率、费用、贷款／债券可比成本",
+      "status": "仅机制证据；数据及半弹性未取得，未自动转换为数量效应"
+    },
+    {
+      "name": "宏观与资产池",
+      "mechanism": "经济活动影响应收账款、租赁资产和现金流，同时改变融资需要、资产可证券化程度和违约风险，净方向不能仅凭GDP判断",
+      "needed": "资产分层、应收账款周转、租赁投放、逾期／违约及合格资产池余额",
+      "status": "基础资产存续规模仅作结构校验；新增资产池与宏观系数尚未量化"
+    },
+    {
+      "name": "投资者与流动性",
+      "mechanism": "投资者要求收益、风险偏好和资金可得性影响发行完成和规模，二级成交只能辅助观察流动性",
+      "needed": "认购倍数、信用利差、发行失败／延期、评级期限结构",
+      "status": "深交所成交额已接入辅助表，覆盖范围较窄，未作全市场需求或因果代理"
+    },
+    {
+      "name": "政策和重大事件",
+      "mechanism": "合格资产范围、备案规则和监管变化影响供给可行性、时滞及跨期安排",
+      "needed": "正式文件、生效日期、适用基础资产和项目清单",
+      "status": "未核验具体新增政策冲击，未添加政策虚拟变量或声称政策效应已估计"
+    }
+  ],
+  "input_sha256": {
+    "abs-monthly.csv": "c80d50f5d2be29d3e04aa0a7fa33967fd8be68071cc47b80157f64f6fc7d8839",
+    "abs-settings.json": "94a443e8c58c6e611969ee34ca17a7c3f2187e85ea65c2cb8988b0a23f9c8b6e",
+    "abs-company.json": "e1355d303423257f75d0d5c866875ea96a81536f20a4b5cdd311edf78a5ec650",
+    "abs-source.json": "9a56e49f68d932efa6670441590600610178f00916b58d5555f70aafdbaed927"
+  },
+  "code_sha256": "73d36b4ff688545dcd1330cf39c68e2424cad4ff73a29c5047c93d512573e118"
+}

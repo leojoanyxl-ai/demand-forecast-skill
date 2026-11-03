@@ -1,0 +1,11 @@
+{
+  "说明": "情景路径依次为2027、2028，以小数填增速；economic_parameters覆盖原始弹性校准目标，需central及interpretation，超出范围同时改range/grid。logit和TCO系数由转换式生成。",
+  "scenario_overrides": {
+    "基准": {},
+    "乐观": {},
+    "悲观": {}
+  },
+  "cost_example": {},
+  "export_cost_example": {},
+  "economic_parameters": {}
+}

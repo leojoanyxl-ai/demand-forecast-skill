@@ -1,0 +1,4 @@
+interface:
+  display_name: "行业需求预测与经营计划助手"
+  short_description: "用经济机制和历史验证预测行业需求，运行新能源汽车或ABS模块并形成有条件的经营预案"
+  default_prompt: "使用 $demand-forecast 建立任务卡，选择新能源汽车或ABS模块，核对数据与经济机制，运行三情景和历史验证并给出有条件的经营建议。"

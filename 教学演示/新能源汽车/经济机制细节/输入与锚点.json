@@ -1,0 +1,475 @@
+{
+  "config": {
+    "as_of": "2026-11-03",
+    "scope": "全国厂家新能源销量，含出口；国内为同口径总量减出口；单位万辆",
+    "model_status": "公开数据锚点＋描述性参照＋外部量级下原始弹性目标经导数转换＋条件网格；非本样本识别，非业务验收通过",
+    "parameters": {
+      "income_elasticity": {
+        "meaning": "国内总汽车需求对实际购买力的条件弹性",
+        "evidence": "统一参数表及转换式见弹性映射.csv；原研究定义/样本迁移仍有限制，不是本项目因果估计。",
+        "value": 2.5,
+        "kind": "外部量级下条件校准；未本样本识别"
+      },
+      "total_auto_cost_elasticity": {
+        "meaning": "国内总汽车需求对总体实际成本指数的条件弹性",
+        "evidence": "统一参数表及转换式见弹性映射.csv；原研究定义/样本迁移仍有限制，不是本项目因果估计。",
+        "kind": "外部量级下条件校准；未本样本识别",
+        "value": -0.4975422088789705
+      },
+      "relative_cost_odds_coefficient": {
+        "meaning": "新能源相对成本优势对份额log-odds的系数，不是新能源自身价格弹性",
+        "evidence": "统一参数表及转换式见弹性映射.csv；原研究定义/样本迁移仍有限制，不是本项目因果估计。",
+        "kind": "外部量级下条件校准；未本样本识别",
+        "value": 2.4783809703566697
+      },
+      "infrastructure_odds_coefficient": {
+        "meaning": "未货币化补能便利偏离参照对份额log-odds的系数",
+        "evidence": "统一参数表及转换式见弹性映射.csv；原研究定义/样本迁移仍有限制，不是本项目因果估计。",
+        "kind": "外部量级下条件校准；未本样本识别",
+        "value": 0.7236096759818569
+      },
+      "foreign_demand_elasticity": {
+        "meaning": "海外需求规模的条件弹性",
+        "evidence": "统一参数表及转换式见弹性映射.csv；原研究定义/样本迁移仍有限制，不是本项目因果估计。",
+        "kind": "外部量级下条件校准；未本样本识别",
+        "value": 1
+      },
+      "export_price_elasticity": {
+        "meaning": "相对海外竞品的到岸价格条件弹性",
+        "evidence": "统一参数表及转换式见弹性映射.csv；原研究定义/样本迁移仍有限制，不是本项目因果估计。",
+        "kind": "外部量级下条件校准；未本样本识别",
+        "value": -1.5
+      }
+    },
+    "cost_example": {
+      "nature": "代表乘用车的成本示例，不是已观测行业均价；全行业应用须验证车型/商用车权重和代表性",
+      "price_basis": "以2026年价格表示的实际值；税费先按当年名义价及上限计算再折回",
+      "nev_price_real": 160000,
+      "ice_price_real": 140000,
+      "nev_annual_use_real": 5000,
+      "ice_annual_use_real": 11000,
+      "nev_residual_real": 40000,
+      "ice_residual_real": 45000,
+      "holding_years": 5,
+      "real_discount_rate": 0.05,
+      "vat_rate": 0.13,
+      "purchase_tax_rate": 0.1,
+      "nev_relief_cap_nominal": 15000,
+      "eligibility": "示例车型符合减免目录条件；未估计全行业资格覆盖"
+    },
+    "export_cost_example": {
+      "nature": "示例单车基数与价格，不是官方平均出口价；简化表示退税收入变化，不是完整企业税务测算",
+      "eligible_tax_base_real": 200000,
+      "landed_price_real_before_change": 200000
+    },
+    "export_rebate_policy": {
+      "old_rate": 0.13,
+      "new_rate": 0.09,
+      "effective_date": "2027-04-01",
+      "affected_export_weight_2027": 0.75,
+      "weight_evidence": "假设各月出口均匀，故4—12月占9/12；不是已观测未来分布",
+      "scope_evidence": "官方附件按商品代码适用，适用比例另为规划假设",
+      "source": "https://szs.mof.gov.cn/zhengcefabu/202610/t20261012_4002592.htm"
+    },
+    "reference_path": {
+      "nev_real_price_growth": [
+        -0.013,
+        -0.013
+      ],
+      "ice_real_price_growth": [
+        -0.013,
+        -0.013
+      ],
+      "infrastructure_growth": [
+        0.4240648916893508,
+        0.4240648916893508
+      ],
+      "nev_tax_relief": [
+        0.5,
+        0.5
+      ],
+      "meaning": "共同车价参照使用小汽车CPI数值的规划延续，不是分车型实际成交价观测。公共桩历史参照42.41%、基准未来延续16.33%；不证明补能效应已识别。2028半征仅为条件参照。"
+    },
+    "scenarios": [
+      {
+        "name": "悲观",
+        "path_evidence": "默认收入4.40%和共同车价参照-1.30%延续近期值，未来并非观测。收入±2pp、额外降价2pp、海外-5/0/+10%为压力条件；公共桩历史参照42.41%，基准延续近期16.33%，其余路径见本次输入；非概率或官方预测。",
+        "real_income_growth": [
+          0.023999999999999997,
+          0.023999999999999997
+        ],
+        "inflation_growth": [
+          0.009,
+          0.009
+        ],
+        "nev_real_price_growth": [
+          0,
+          0
+        ],
+        "ice_real_price_growth": [
+          -0.013,
+          -0.013
+        ],
+        "infrastructure_growth": [
+          0.1,
+          0.1
+        ],
+        "foreign_demand_growth": [
+          -0.05,
+          -0.05
+        ],
+        "export_price_pass_through": 1,
+        "rebate_eligible_fraction": 0.8,
+        "nev_tax_relief": [
+          0.5,
+          0
+        ],
+        "financing_quantity_factor": [
+          1,
+          1
+        ],
+        "nonprice_export_access_factor": [
+          0.9,
+          0.9
+        ],
+        "extra_technology_logodds": [
+          0,
+          0
+        ],
+        "pure_timing_transfer_10k": [
+          0,
+          0
+        ],
+        "export_quote_real_growth_before_rebate": [
+          0.02,
+          0.02
+        ],
+        "fx_foreign_per_rmb_growth": [
+          0,
+          0
+        ],
+        "foreign_competitor_price_growth": [
+          0,
+          0
+        ]
+      },
+      {
+        "name": "基准",
+        "path_evidence": "默认收入4.40%和共同车价参照-1.30%延续近期值，未来并非观测。收入±2pp、额外降价2pp、海外-5/0/+10%为压力条件；公共桩历史参照42.41%，基准延续近期16.33%，其余路径见本次输入；非概率或官方预测。",
+        "real_income_growth": [
+          0.044,
+          0.044
+        ],
+        "inflation_growth": [
+          0.009,
+          0.009
+        ],
+        "nev_real_price_growth": [
+          -0.013,
+          -0.013
+        ],
+        "ice_real_price_growth": [
+          -0.013,
+          -0.013
+        ],
+        "infrastructure_growth": [
+          0.16331546023235033,
+          0.16331546023235033
+        ],
+        "foreign_demand_growth": [
+          0,
+          0
+        ],
+        "export_price_pass_through": 0.5,
+        "rebate_eligible_fraction": 0.8,
+        "nev_tax_relief": [
+          0.5,
+          0.5
+        ],
+        "financing_quantity_factor": [
+          1,
+          1
+        ],
+        "nonprice_export_access_factor": [
+          1,
+          1
+        ],
+        "extra_technology_logodds": [
+          0,
+          0
+        ],
+        "pure_timing_transfer_10k": [
+          0,
+          0
+        ],
+        "export_quote_real_growth_before_rebate": [
+          0,
+          0
+        ],
+        "fx_foreign_per_rmb_growth": [
+          0,
+          0
+        ],
+        "foreign_competitor_price_growth": [
+          0,
+          0
+        ]
+      },
+      {
+        "name": "乐观",
+        "path_evidence": "默认收入4.40%和共同车价参照-1.30%延续近期值，未来并非观测。收入±2pp、额外降价2pp、海外-5/0/+10%为压力条件；公共桩历史参照42.41%，基准延续近期16.33%，其余路径见本次输入；非概率或官方预测。",
+        "real_income_growth": [
+          0.064,
+          0.064
+        ],
+        "inflation_growth": [
+          0.009,
+          0.009
+        ],
+        "nev_real_price_growth": [
+          -0.033,
+          -0.033
+        ],
+        "ice_real_price_growth": [
+          -0.013,
+          -0.013
+        ],
+        "infrastructure_growth": [
+          0.22,
+          0.22
+        ],
+        "foreign_demand_growth": [
+          0.1,
+          0.1
+        ],
+        "export_price_pass_through": 0.2,
+        "rebate_eligible_fraction": 0.8,
+        "nev_tax_relief": [
+          0.5,
+          0.5
+        ],
+        "financing_quantity_factor": [
+          1,
+          1
+        ],
+        "nonprice_export_access_factor": [
+          1.03,
+          1.03
+        ],
+        "extra_technology_logodds": [
+          0,
+          0
+        ],
+        "pure_timing_transfer_10k": [
+          0,
+          0
+        ],
+        "export_quote_real_growth_before_rebate": [
+          -0.02,
+          -0.02
+        ],
+        "fx_foreign_per_rmb_growth": [
+          0,
+          0
+        ],
+        "foreign_competitor_price_growth": [
+          0,
+          0
+        ]
+      }
+    ],
+    "source_notes": [
+      "公开数据锚点＋描述性参照＋外部量级下原始弹性目标经导数转换＋条件网格；非本样本识别，非业务验收通过",
+      "本轮读取公开页面当前可见版本；发布日期早于截止日，不等于已取得每个历史起点的网页存档。",
+      "小汽车CPI不能识别新能源相对燃油车成交价。仅将-1.3%设为两类共同参照路径，不作为分车型观测；0.9%仅为未来折价基准的持平假设。",
+      "国内总市场及份额趋势来自2021—2025共5个年度，混合历史收入、技术与价格作用，不能解释为独立因果。",
+      "出口基准不延续历史翻倍增长，采用2026桥接值作为无增量海外需求参照；海外路径和准入为压力条件。",
+      "原型中的车型成本、持有期、残值、出口税基和政策覆盖仍属示例；实际利润与税额须用企业输入。",
+      "融资、技术、抢购本轮没有另估数量效应；零增量表示未叠加，不证明真实影响为零。补能历史CAGR与近期同比由辅助CSV原值计算后进入条件偏离。",
+      "本轮设置覆盖：{\"说明\": \"情景路径依次为2027、2028，以小数填增速；economic_parameters覆盖原始弹性校准目标，需central及interpretation，超出范围同时改range/grid。logit和TCO系数由转换式生成。\", \"scenario_overrides\": {\"基准\": {}, \"乐观\": {}, \"悲观\": {}}, \"cost_example\": {}, \"export_cost_example\": {}, \"economic_parameters\": {}}",
+      "原始弹性目标、转换后的模型系数与隐含弹性分开；参数表是中央值和网格唯一入口。"
+    ],
+    "domestic_share_reference_history": [
+      {
+        "year": 2021,
+        "auto": 2627.5,
+        "auto_export": 201.5,
+        "nev": 352.1,
+        "nev_export": 31.0
+      },
+      {
+        "year": 2022,
+        "auto": 2686.4,
+        "auto_export": 311.1,
+        "nev": 688.7,
+        "nev_export": 67.9
+      },
+      {
+        "year": 2023,
+        "auto": 3009.4,
+        "auto_export": 491,
+        "nev": 949.5,
+        "nev_export": 120.3
+      },
+      {
+        "year": 2024,
+        "auto": 3143.6,
+        "auto_export": 585.9,
+        "nev": 1286.6,
+        "nev_export": 128.4
+      },
+      {
+        "year": 2025,
+        "auto": 3440,
+        "auto_export": 709.8,
+        "nev": 1649,
+        "nev_export": 261.5
+      }
+    ],
+    "observed": {
+      "2025_full": {
+        "auto": 3440,
+        "auto_export": 709.8,
+        "nev": 1649,
+        "nev_export": 261.5
+      },
+      "2025_ytd": {
+        "auto": 2436.3,
+        "auto_export": 495,
+        "nev": 1122.8,
+        "nev_export": 175.8
+      },
+      "2026_ytd": {
+        "auto": 2327.1,
+        "auto_export": 820.5,
+        "nev": 1247.2,
+        "nev_export": 400.6
+      }
+    },
+    "calibration": {
+      "domestic_reference_growth": [
+        0.03768506791444664,
+        0.03768506791444664
+      ],
+      "income_reference_growth": [
+        0.044,
+        0.044
+      ],
+      "meaning": "国内总市场历史增长中位数作为参照；收入与成本只调整偏离参照，非因果分解。"
+    },
+    "parameter_registry": {
+      "version": "unified-20261103",
+      "anchor": "2026国内桥接份额与代表车型成本；转换依赖锚点，未来隐含弹性随份额变化",
+      "status": "校准目标，不是全部可比的本样本因果估计；文献不匹配部分保留条件性质",
+      "parameters": {
+        "income_elasticity": {
+          "central": 2.5,
+          "range": [
+            1,
+            4
+          ],
+          "grid": [
+            1,
+            2.5,
+            4
+          ],
+          "source": "https://doi.org/10.1086/725910",
+          "interpretation": "中国城市2005—2017新车登记收入弹性约2.5；1和4是迁移压力界，不是置信界"
+        },
+        "market_purchase_price_elasticity": {
+          "central": -0.5,
+          "range": [
+            -0.84,
+            -0.2
+          ],
+          "grid": [
+            -0.84,
+            -0.5,
+            -0.2
+          ],
+          "source": "https://www.rff.org/documents/4120/WP_23-33.pdf",
+          "interpretation": "美国新车购价弹性量级；通过代表车型购价到TCO导数转换为本模型成本系数。异质收入组范围不是中国估计区间"
+        },
+        "nev_purchase_price_elasticity": {
+          "central": -1.4,
+          "range": [
+            -2.67,
+            -1.4
+          ],
+          "grid": [
+            -2.67,
+            -2,
+            -1.4
+          ],
+          "source": "https://www.congress.gov/crs-product/IF13089",
+          "interpretation": "沿用接收版所列EV文献量级的规划校准目标；本轮原机构页受访问限制，未独立核实该数值范围，不称已核经验估计。不能直接当logit系数，转换计入M响应与购价/TCO传导，样本迁移仍待核"
+        },
+        "infrastructure_sales_elasticity": {
+          "central": 0.3,
+          "range": [
+            0.22,
+            0.85
+          ],
+          "grid": [
+            0.22,
+            0.3,
+            0.85
+          ],
+          "source": "https://documents1.worldbank.org/curated/en/225111639490843204/txt/The-Global-Diffusion-of-Electric-Vehicles-Lessons-from-the-First-Decade.txt",
+          "interpretation": "0.3为相关文献量级下的规划目标，世界银行0.32出自OLS结果；0.22至0.85只是迁移压力范围，不能称统一因果区间。gamma=目标销量弹性/(1-p锚点)"
+        },
+        "foreign_demand_elasticity": {
+          "central": 1,
+          "range": [
+            0.8,
+            1.5
+          ],
+          "grid": [
+            0.8,
+            1,
+            1.5
+          ],
+          "source": "https://www.imf.org/external/pubs/ft/wp/1999/wp9974.pdf",
+          "interpretation": "加总贸易文献量级下的海外需求代理压力弹性；海外终端市场与国外收入不是同一指标，保持条件设定"
+        },
+        "export_price_elasticity": {
+          "central": -1.5,
+          "range": [
+            -5,
+            -1.2
+          ],
+          "grid": [
+            -5,
+            -3.1,
+            -1.5,
+            -1.2
+          ],
+          "source": "https://www.usitc.gov/publications/332/working_papers/phillips_2024_04_a_elasticities.pdf",
+          "interpretation": "相对到岸价的条件压力弹性；交通部门Armington替代弹性仅提供量级背景，不直接识别中国新能源出口需求系数"
+        }
+      }
+    },
+    "mapping_anchor": {
+      "domestic_share": 0.5854118456985339,
+      "nev_price_to_tco": 1.0615916559965841,
+      "ice_price_to_tco": 0.9249457078278419,
+      "market_price_to_tco": 1.0049398645525316,
+      "raw": {
+        "income_elasticity": 2.5,
+        "market_purchase_price_elasticity": -0.5,
+        "nev_purchase_price_elasticity": -1.4,
+        "infrastructure_sales_elasticity": 0.3,
+        "foreign_demand_elasticity": 1,
+        "export_price_elasticity": -1.5
+      }
+    }
+  },
+  "anchor": {
+    "domestic_auto": 2118.847844228094,
+    "domestic_nev": 1240.398627243928,
+    "nev_export": 595.886803185438,
+    "share": 0.5854118456985339,
+    "share_reference_logit_slope": 0.46758656569829526,
+    "nature": "2026全年桥接估算；沿用2025年年内分布；非全年实际"
+  }
+}

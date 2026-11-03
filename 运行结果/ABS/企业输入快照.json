@@ -1,0 +1,8 @@
+{
+  "nature": "实际企业参数待补；留空会输出条件公式，仍正常完成行业分析",
+  "volume_share": null,
+  "project_share": null,
+  "fee_rate": null,
+  "hours_per_project": null,
+  "annual_available_hours": null
+}

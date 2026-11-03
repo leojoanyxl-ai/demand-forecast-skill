@@ -1,0 +1,21 @@
+name: Validate Skill and both industry modules
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+      - name: Behavioral tests
+        run: python -m unittest discover -s demand-forecast/scripts -p 'test_*.py'
+      - name: Run both industries offline
+        run: |
+          python demand-forecast/scripts/run_skill.py --industry nev --output-dir output/nev
+          python demand-forecast/scripts/run_skill.py --industry abs --output-dir output/abs
+          python demand-forecast/scripts/run_skill.py --industry abs --demo --output-dir output/abs-demo
+      - name: Check project links and portable inputs
+        run: python tools/check_delivery.py

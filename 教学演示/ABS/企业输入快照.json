@@ -1,0 +1,8 @@
+{
+  "nature": "仅教学假设，不能作为任何真实公司的份额、收费、工时或订单",
+  "volume_share": 0.02,
+  "project_share": 0.02,
+  "fee_rate": 0.002,
+  "hours_per_project": 1200,
+  "annual_available_hours": 36000
+}

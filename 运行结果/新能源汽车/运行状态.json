@@ -1,0 +1,58 @@
+{
+  "pipeline": "completed",
+  "forecast_validation": "年度参照链与月度目标基准已运行；完整经济情景尚未历史验证",
+  "business_acceptance": "计算可完成不代表真实业务通过；须核实企业参数性质和容忍度",
+  "company_calculation_states": [
+    "needs_input",
+    "needs_input",
+    "needs_input",
+    "needs_input",
+    "needs_input",
+    "needs_input"
+  ],
+  "history_rows": 5,
+  "forecast_rows": 6,
+  "grid_rows": 5832,
+  "backtest_rows": 18,
+  "fit": {
+    "share_logit_slope": 0.46758656569829526,
+    "domestic_reference_growth": 0.03768506791444664,
+    "income_reference_growth": 0.051,
+    "observations": 5,
+    "growth_observations": 4
+  },
+  "as_of": "2026-11-03",
+  "parameters_unfilled": [],
+  "parameters_not_locally_identified": [
+    "income_elasticity",
+    "total_auto_cost_elasticity",
+    "relative_cost_odds_coefficient",
+    "infrastructure_odds_coefficient",
+    "foreign_demand_elasticity",
+    "export_price_elasticity"
+  ],
+  "monthly_rows": 57,
+  "monthly_derived_rows": 4,
+  "monthly_backtest_rows": 736,
+  "monthly_reconciliation_flags": 12,
+  "auxiliary_observations": 277,
+  "monthly_sha256": "6d0c876e3ed94cf118da3f3128dc94d8a028f5156cde1573e557a397913f61e3",
+  "parameter_registry_sha256": "5abf6b359e6aba3eaad26b0566475dd4b5f85c74e293489b7788981870dc8c89",
+  "code_sha256": {
+    "abs_forecast.py": "73d36b4ff688545dcd1330cf39c68e2424cad4ff73a29c5047c93d512573e118",
+    "economic_scenarios.py": "980868809516beb2c0f27a6d6e0e662d54129fb1d29a7a3980abd8030aae9bfd",
+    "import_abs_workbook.py": "cc4522c0686bff81f1efa42812399cc99e87e3e80cf0f57b8d9ab350f272abaf",
+    "monthly_demand.py": "f5c595689700f338c98834e6894b36c2c020d0ab66e71e13abbef356df17f772",
+    "parameter_mapping.py": "31e1140f726556c8e545e114bc9704b78e4132716b259219a2e036dc9d2b2e81",
+    "planning_bridge.py": "892132870798b1d449be415ee07653fd9b47bb80e967bdc1a3ad7f1864709e88",
+    "render_economic_report.py": "556a107defb8d88844079c645954e0f2334c2eb33308978695d064fbca425526",
+    "run_full.py": "c2f14d95a45a7245777d0bba0096a5443dca089c313df058f4dc6f508538b478",
+    "run_skill.py": "0aa87fa4012553ae36a9ae97e0ed4269da528464668b628832debbf3b392bb4b",
+    "test_abs.py": "2b3e5a47b65397e2a7176aea136da13e241c176d927bc385dc17424e22426791",
+    "test_unified.py": "807816c195077dd6c36ef029efb95026d64b66c453887b1507478492425226d9",
+    "unified_report.py": "d386e1e860d1b9afee79b3d777ed487bf2deff3942916dd5c8aea25a43a51069"
+  },
+  "input_sha256": "c244ce85af1d60765ad651d45e20b88e60a6c6c430ea33ccec4be28f7ed2656d",
+  "template_sha256": "8a7fb261dd0f036d1dcc31052a30ca328c26b663645deb425cb0a8031d65dbd5",
+  "company_input_sha256": "e08ebd26e037390e6cec05489070c4aa135bf74a6d3e603aae6c0d940815e710"
+}

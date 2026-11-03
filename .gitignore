@@ -1,0 +1,12 @@
+# Keep all runtime data and parameters. Ignore only generated/local maintenance files.
+__pycache__/
+*.py[cod]
+.venv/
+.validation-deps/
+output/
+dist/
+demand-forecast/运行记录/
+核验与构建/
+.env
+.env.*
+*.token

@@ -1,0 +1,13 @@
+﻿stage,parameter,raw_target,model_value,local_implied,formula,status
+2026桥接锚点,income_elasticity,2.5,2.5,2.5,直接条件弹性；研究样本迁移待核,数学转换已计算；经验迁移未验证
+2026桥接锚点,market_purchase_price_elasticity,-0.5,-0.4975422088789705,-0.5,epsilon_TCO=epsilon_purchase/kappa_market,数学转换已计算；经验迁移未验证
+2026桥接锚点,nev_purchase_price_elasticity,-1.4,2.4783809703566697,-1.4,beta=(epsilon_TCO*w_anchor-epsilon_NEV_purchase/kappa_NEV)/(1-p_anchor),数学转换已计算；经验迁移未验证
+2026桥接锚点,infrastructure_sales_elasticity,0.3,0.7236096759818569,0.3,gamma=eta_B/(1-p_anchor),数学转换已计算；经验迁移未验证
+2026桥接锚点,foreign_demand_elasticity,1,1,1,海外规模代理的条件弹性，非自动等于国外收入弹性,数学转换已计算；经验迁移未验证
+2026桥接锚点,export_price_elasticity,-1.5,-1.5,-1.5,出口需求压力弹性；Armington量级不自动等于该估计量,数学转换已计算；经验迁移未验证
+2027年悲观,infrastructure_sales_elasticity,0.3,0.7236096759818569,0.25784279375004104,固定M的局部弹性=(1-p_t)*gamma；固定系数不保证未来销量弹性恒定,模型内局部导数，非实证因果贡献
+2028年悲观,infrastructure_sales_elasticity,0.3,0.7236096759818569,0.23554234666437093,固定M的局部弹性=(1-p_t)*gamma；固定系数不保证未来销量弹性恒定,模型内局部导数，非实证因果贡献
+2027年基准,infrastructure_sales_elasticity,0.3,0.7236096759818569,0.24554386645324688,固定M的局部弹性=(1-p_t)*gamma；固定系数不保证未来销量弹性恒定,模型内局部导数，非实证因果贡献
+2028年基准,infrastructure_sales_elasticity,0.3,0.7236096759818569,0.19638989041124252,固定M的局部弹性=(1-p_t)*gamma；固定系数不保证未来销量弹性恒定,模型内局部导数，非实证因果贡献
+2027年乐观,infrastructure_sales_elasticity,0.3,0.7236096759818569,0.231418496389956,固定M的局部弹性=(1-p_t)*gamma；固定系数不保证未来销量弹性恒定,模型内局部导数，非实证因果贡献
+2028年乐观,infrastructure_sales_elasticity,0.3,0.7236096759818569,0.17212273882538437,固定M的局部弹性=(1-p_t)*gamma；固定系数不保证未来销量弹性恒定,模型内局部导数，非实证因果贡献

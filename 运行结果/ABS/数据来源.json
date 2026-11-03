@@ -1,0 +1,62 @@
+{
+  "source_file": "金融服务业-资产支持专项计划ABS(1).xlsx",
+  "source_sha256": "69c0068bdd6556009b12ba73b32c9c38a5042f2256232392d512d0a43eacd6a6",
+  "source_provider": "同花顺 iFinD（用户提供的导出文件）",
+  "sheet": "Sheet1",
+  "rows": 81,
+  "start": "2020-01",
+  "end": "2026-09",
+  "columns": {
+    "new_volume_100m_cny": {
+      "column": "J",
+      "label": "资产支持专项计划(ABS):新增备案规模:合计",
+      "unit": "亿元"
+    },
+    "new_projects": {
+      "column": "K",
+      "label": "资产支持专项计划(ABS):新增备案数量:合计",
+      "unit": "只"
+    },
+    "outstanding_projects": {
+      "column": "H",
+      "label": "资产支持专项计划(ABS):存续数量:合计",
+      "unit": "只"
+    },
+    "szse_turnover_cny": {
+      "column": "L",
+      "label": "深交所:成交金额:债券:ABS:当月值",
+      "unit": "元"
+    },
+    "szse_turnover_ytd_cny": {
+      "column": "M",
+      "label": "深交所:成交金额:债券:ABS:本年累计",
+      "unit": "元"
+    },
+    "szse_market_value_cny": {
+      "column": "N",
+      "label": "深交所:流通市值:债券:ABS:期末值",
+      "unit": "元"
+    },
+    "receivable_stock_100m_cny": {
+      "column": "P",
+      "label": "资产支持专项计划(ABS):存续规模:债权类:应收账款",
+      "unit": "亿元"
+    },
+    "cmbs_stock_100m_cny": {
+      "column": "Q",
+      "label": "资产支持专项计划(ABS):存续规模:债权类:商业不动产抵押贷款(CMBS)",
+      "unit": "亿元"
+    },
+    "leasing_stock_100m_cny": {
+      "column": "R",
+      "label": "资产支持专项计划(ABS):存续规模:债权类:-融资租赁债权",
+      "unit": "亿元"
+    }
+  },
+  "vintage": "用户提供的当前导出版本；未重建各月首次发布值及修订历史",
+  "public_source": "https://www.amac.org.cn/sjtj/tjbg/zczqh/",
+  "latest_brief": "https://www.amac.org.cn/sjtj/tjbg/zczqh/202610/P020261030623458249458.pdf",
+  "latest_list_publication": "2026-10-30",
+  "verification": "已核验协会目录在截止日前列出2026年9月简报；PDF正文访问超时，未逐项核验全部81个月数值。目录发布日期不替代全部原值核验。",
+  "availability": "截至2026-11-03按用户导出使用；历史发布日期未逐项取得，回测为当前版本伪滚动验证，非实时回放"
+}
