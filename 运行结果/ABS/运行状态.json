@@ -71,7 +71,7 @@
   ],
   "input_sha256": {
     "abs-monthly.csv": "c80d50f5d2be29d3e04aa0a7fa33967fd8be68071cc47b80157f64f6fc7d8839",
-    "abs-settings.json": "94a443e8c58c6e611969ee34ca17a7c3f2187e85ea65c2cb8988b0a23f9c8b6e",
+    "abs-settings.json": "d8819eb4f329cc324363dd25fc6ca69bc6594023ac3a9414d8dfc5454fe330ed",
     "abs-company.json": "e1355d303423257f75d0d5c866875ea96a81536f20a4b5cdd311edf78a5ec650",
     "abs-source.json": "9a56e49f68d932efa6670441590600610178f00916b58d5555f70aafdbaed927"
   },
