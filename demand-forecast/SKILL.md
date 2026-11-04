@@ -15,6 +15,10 @@ Industry Demand Forecasting & Planning Assistant
 
 统一执行入口为 `python scripts/run_skill.py --industry nev|abs`，可加 `--demo` 使用明确标记的企业教学参数、`--output-dir` 指定新输出目录、`--open` 打开报告。无Python时需安装Python 3.10+；完整分析仅需标准库，不需要API Key或原Excel文件。双击“选择行业运行.cmd”可使用菜单。已有新能源汽车启动文件继续兼容。
 
+要求比较第一版或验证分支抵消时，读取[版本验证规则](references/version-validation.md)，使用 `--industry nev --validate` 或 `scripts/version_backtest.py`。将冻结原版年度回测、同起点年度比较、月度适配、桥接检查和候选模型分层呈现；预测补齐的2026不当实际评分，真实失配与初版更好均保留。
+
+自v1.1.0，本案例默认新能源汽车入口用2015—2025完整11年总量历史重算主参照，并自动生成版本验证，细则见[11年总量模型](references/total11-model.md)；国内/出口较短历史作为独立经济情景和经营核算校验，保留两模型差异，不按总量强制配平。原生`run_full.py`仍是分支引擎；完整新版请使用统一`run_skill.py`。自定义设置等参数的分支重放不自动获得冻结案例比较结论。
+
 - **新能源汽车**：读取[经济驱动执行规则](references/economic-driver-workflow.md)和[完整运行规则](references/full-run.md)。国内／出口两条线、购置与使用成本、份额弹性转换和车辆经营核算使用其专属数据与参数。
 - **ABS融资活动**：读取[ABS方法与使用规则](references/abs-module.md)。使用新增备案规模、项目数和平均项目规模；利差、合格资产池及投资者需求缺少配套数据时保留未量化状态。企业经营映射为项目机会、费用和工时，不套用汽车税费、国内出口划分、车辆库存或工厂产能。
 - **其他行业**：读取[行业适配规则](references/industry-adaptation.md)，先定义目标与供需边界。只有通过数据检查并有对应计算适配器才称可直接运行；通用分析流程不等于所有行业已有数值模型。

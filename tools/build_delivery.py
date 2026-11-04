@@ -194,6 +194,7 @@ def generate_docs():
 
 数据依据：[中国证券投资基金业协会简报目录](https://www.amac.org.cn/sjtj/tjbg/zczqh/)；本项目[ABS源记录](../demand-forecast/assets/abs-source.json)、[新能源汽车证据](../demand-forecast/assets/nev-evidence.json)与[弹性唯一输入](../demand-forecast/assets/economic-parameters.json)。协会目录核实了简报发布日期，未替代用户工作簿全部数值核验。
 '''
+    text='# v1.0.2历史说明（分支模型快照）\n\nv1.1.0已改用2015—2025完整11年总量主参照，并增加同起点比较。当前请先看[11年重算与回测结论](11年重算与回测结论.md)；下文保留此前分支版说明及其有限样本结果，不代表本次扩大验证成绩。\n\n'+text
     (docs/'汇报说明.md').write_text(text, encoding='utf-8')
     (docs/'汇报说明.html').write_text(render_markdown(text), encoding='utf-8')
     lecture = '''# 课堂讲稿与答辩准备
@@ -252,10 +253,11 @@ def generate_docs():
 |没有公司数据还能做什么？|做行业情景和条件核算，输出数据需求与触发规则；不编造份额、订单、管线和成本|
 |为什么2027预测需要15个月提前期？|最后实际月是2026年9月，2026第四季度尚需桥接；2027年1—12月是之后第4—15月|
 '''
+    lecture='# v1.0.2历史讲稿\n\n本次v1.1.0已按11年总量历史重算，先读[当前结论](11年重算与回测结论.md)。以下保留旧版讲稿，不能照读为本次扩大回测的结果。\n\n'+lecture
     (docs/'课堂讲稿.md').write_text(lecture, encoding='utf-8')
     (docs/'课堂讲稿.html').write_text(render_markdown(lecture), encoding='utf-8')
     (ROOT/'开始使用.html').write_text('''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>开始使用行业需求预测Skill</title><style>body{margin:0;background:#f3f6f8;color:#213b53;font:17px/1.85 "Microsoft YaHei",sans-serif}main{max-width:1000px;margin:auto;padding:40px 24px}h1{font-size:36px}h2{margin-top:36px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}.card{background:white;border:1px solid #d4e0e8;border-radius:12px;padding:24px}.button{display:block;background:#176f81;color:white;text-decoration:none;padding:12px 18px;border-radius:7px;margin-top:16px}a{color:#076d81}small{font-size:14px;color:#526b7d}.note{background:#e3eff1;padding:16px;border-left:4px solid #176f81}@media(max-width:600px){main{padding:20px 16px}h1{font-size:28px}}</style><main><p>Industry Demand Forecasting &amp; Planning Assistant</p><h1>行业需求预测与经营计划助手</h1><p>一个Skill，新能源汽车与ABS两个可运行模块。课堂信息截止：2026年11月3日。</p><div class="grid"><section class="card"><h2>新能源汽车</h2><p>国内与出口分开预测，解释收入、相对成本、补能、政策与海外条件，再做销售与产能条件核算。</p><a class="button" href="运行结果/新能源汽车/需求预测与经营预案.html">查看需求与经营报告</a><small><a href="教学演示/新能源汽车/需求预测与经营预案.html">查看教学企业参数演示</a></small></section><section class="card"><h2>ABS融资活动</h2><p>按项目数×单均规模解释新增备案活动，比较历史基线，并做项目机会、费用和工时条件核算。</p><a class="button" href="运行结果/ABS/ABS融资活动预测与业务预案.html">查看ABS报告与验证</a><small><a href="教学演示/ABS/ABS融资活动预测与业务预案.html">查看教学企业参数演示</a></small></section></div><h2>自己运行三步</h2><ol><li>在下载后的 demand-forecast 文件夹中，双击“选择行业运行.cmd”。其他系统按README中的Python命令运行。</li><li>选择行业。普通模式保留真实企业数据缺口；教学模式用明确标记的假设演示核算。</li><li>报告会自动打开，每次结果保存到新的“运行记录”目录；同时生成输入快照、回测明细、汇总和运行状态。</li></ol><p>修改前先复制一份输入。新能源汽车弹性、未来路径和企业参数分别维护；ABS场景在 abs-settings.json 中修改。不要只手改报告数字。</p><div class="note">能计算，不代表所有经济参数都被实证识别，也不代表企业已批准方案。缺少真实企业输入时给条件核算，教学数值不能当作订单或成本事实。</div><h2>课堂汇报与维护</h2><p><a href="docs/汇报说明.html">阅读计算原理、逐步改进、经济学理论和不足</a></p><p><a href="docs/课堂讲稿.html">阅读8—10分钟讲稿与答辩准备</a></p><p><a href="docs/验证记录.md">查看已完成的验证记录</a> · <a href="README.md">完整使用说明</a> · <a href="demand-forecast/SKILL.md">Skill入口</a></p><p><a href="https://github.com/leojoanyxl-ai/demand-forecast-skill">GitHub私有仓库：后续修改入口</a></p></main></html>''', encoding='utf-8')
-    for manual_name in ('组员分享要点', '维护交接'):
+    for manual_name in ('组员分享要点', '维护交接', '11年重算与回测结论'):
         manual = (docs/(manual_name+'.md')).read_text(encoding='utf-8')
         rendered = render_markdown(manual).replace('<title>行业需求预测Skill汇报说明</title>', '<title>'+html.escape(manual_name)+'</title>')
         for other in ('组员分享要点', '维护交接'):
@@ -263,6 +265,8 @@ def generate_docs():
         (docs/(manual_name+'.html')).write_text(rendered, encoding='utf-8')
     landing_path = ROOT/'开始使用.html'
     landing = landing_path.read_text(encoding='utf-8').replace('<h2>课堂汇报与维护</h2>', '<h2>课堂汇报与维护</h2><p><a href="docs/组员分享要点.html">先看给组员的分享要点</a> · <a href="docs/维护交接.html">后续修改与维护交接</a></p>')
+    landing_path.write_text(landing, encoding='utf-8')
+    landing=landing.replace('GitHub私有仓库：后续修改入口','GitHub公开仓库：后续修改入口').replace('<h1>行业需求预测与经营计划助手</h1>','<h1>行业需求预测与经营计划助手</h1><p><strong>v1.1.0：已按2015—2025完整11年总量历史重算。</strong> <a href="docs/11年重算与回测结论.html">先看本次重算和原版对照结论</a></p>')
     landing_path.write_text(landing, encoding='utf-8')
 
 

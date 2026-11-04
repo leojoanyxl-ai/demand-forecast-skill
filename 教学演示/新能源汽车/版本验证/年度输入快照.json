@@ -1,0 +1,161 @@
+{
+  "as_of": "2026-11-03",
+  "quantity_unit": "万辆",
+  "vintage_limit": "本轮读取公开页面当前可见版本；发布日期早于截止日，不等于已取得每个历史起点的网页存档。",
+  "history": [
+    {
+      "year": 2021,
+      "auto": 2627.5,
+      "auto_export": 201.5,
+      "nev": 352.1,
+      "nev_export": 31.0,
+      "real_income_growth": 0.081,
+      "sales_published": "2022-01-13",
+      "income_published": "2022-01-17",
+      "sales_source": "https://www.miit.gov.cn/gxsj/tjfx/zbgy/qc/art/2022/art_63f16aa43e3543c28bb285b7dc759eea.html",
+      "income_source": "https://www.stats.gov.cn/xxgk/jd/sjdj2020/202201/t20220118_1826611.html"
+    },
+    {
+      "year": 2022,
+      "auto": 2686.4,
+      "auto_export": 311.1,
+      "nev": 688.7,
+      "nev_export": 67.9,
+      "real_income_growth": 0.029,
+      "sales_published": "2023-01-12",
+      "income_published": "2023-01-17",
+      "sales_source": "https://www.miit.gov.cn/jgsj/zbys/gzdt/art/2023/art_72a940d62c9f4181a9de6b3c0071ece4.html",
+      "income_source": "https://www.stats.gov.cn/xxgk/sjfb/zxfb2020/202301/t20230117_1892129.html"
+    },
+    {
+      "year": 2023,
+      "auto": 3009.4,
+      "auto_export": 491,
+      "nev": 949.5,
+      "nev_export": 120.3,
+      "real_income_growth": 0.061,
+      "sales_published": "2024-01-11",
+      "income_published": "2024-01-17",
+      "sales_source": "https://www.miit.gov.cn/jgsj/zbys/gzdt/art/2024/art_c07af594e813497fa3ea0959146010a2.html",
+      "income_source": "https://www.stats.gov.cn/sj/zxfb/202401/t20240116_1946622.html"
+    },
+    {
+      "year": 2024,
+      "auto": 3143.6,
+      "auto_export": 585.9,
+      "nev": 1286.6,
+      "nev_export": 128.4,
+      "real_income_growth": 0.051,
+      "sales_published": "2025-01-13",
+      "income_published": "2025-01-17",
+      "sales_source": "https://www.miit.gov.cn/jgsj/zbys/gzdt/art/2025/art_e4f577dfac694724a108cbdca9a612d3.html",
+      "income_source": "https://www.stats.gov.cn/sj/zxfb/202501/t20250117_1958325.html"
+    },
+    {
+      "year": 2025,
+      "auto": 3440,
+      "auto_export": 709.8,
+      "nev": 1649,
+      "nev_export": 261.5,
+      "real_income_growth": 0.05,
+      "sales_published": "2026-01-14",
+      "income_published": "2026-01-19",
+      "sales_source": "https://www.miit.gov.cn/jgsj/zbys/qcgy/art/2026/art_4c5ed7009d21485da32b2a01abcf2819.html",
+      "income_source": "https://www.stats.gov.cn/sj/zxfb/202601/t20260119_1962321.html"
+    }
+  ],
+  "recent": {
+    "2025_ytd": {
+      "auto": 2436.3,
+      "auto_export": 495,
+      "nev": 1122.8,
+      "nev_export": 175.8,
+      "published": "2025-10-14",
+      "source": "https://www.miit.gov.cn/jgsj/zbys/qcgy/art/2025/art_46ed5c0b309146be88656f94154f1078.html"
+    },
+    "2026_ytd": {
+      "auto": 2327.1,
+      "auto_export": 820.5,
+      "nev": 1247.2,
+      "nev_export": 400.6,
+      "published": "2026-10-12",
+      "source": "https://www.miit.gov.cn/gxsj/tjfx/zbgy/qc/art/2026/art_8a878aeeb8a34a5b88975c5bbe94f7bf.html"
+    }
+  },
+  "macro": {
+    "real_income_growth_ytd": 0.044,
+    "income_published": "2026-10-19",
+    "income_source": "https://www.stats.gov.cn/sj/zxfb/202610/t20261019_1965612.html",
+    "car_price_ytd_growth": -0.013,
+    "cpi_september_yoy": 0.009,
+    "price_published": "2026-10-14",
+    "price_source": "https://www.stats.gov.cn/sj/zxfbhjd/202610/t20261014_1965477.html",
+    "price_limit": "小汽车CPI不能识别新能源相对燃油车成交价。仅将-1.3%设为两类共同参照路径，不作为分车型观测；0.9%仅为未来折价基准的持平假设。"
+  },
+  "infrastructure": {
+    "derived_from": "auxiliary-monthly.csv",
+    "source": "同花顺iFinD导出公共充电桩原值，位置与原文件指纹见CSV",
+    "unit": "台",
+    "limit": "原值计算历史CAGR和最近同比；未来延续为条件，桩数不是便利性"
+  },
+  "external_income_elasticity": {
+    "value": 2.5,
+    "published": "2023-11-10",
+    "source": "https://doi.org/10.1086/725910",
+    "title": "Linn and Shen, The Effect of Income on Vehicle Demand: Evidence from China's New Vehicle Market",
+    "sample": "中国城市2005—2017年新车登记与收入，利用出口带来的收入变动进行识别；本轮核对期刊摘要，未读取付费全文",
+    "limit": "外部新车收入弹性，不是2027年全国全车型厂商销量的已识别系数，不是新能源份额系数；仅用于偏离参照的条件敏感性。"
+  },
+  "overseas_evidence": {
+    "source": "https://www.iea.org/reports/global-ev-outlook-2026/trends-in-electric-cars",
+    "report_year": 2026,
+    "availability": "2026年报告已在截止日前公开；本轮未单独核实网页精确首发日",
+    "outside_three_major_markets_sales_million_2024": 1.3,
+    "outside_three_major_markets_sales_million_2025": 2.0,
+    "limit": "IEA电动乘用车BEV/PHEV终端口径，不与中汽协全车型出口相减或拼接。仅支持目的地分化的机制，不能将该区域增长直接设为全部中国出口增速。"
+  },
+  "unfilled_actuals": [
+    "新能源/燃油同质成交价与残值连续序列",
+    "按目的地匹配的海外终端需求、库存与竞争价格",
+    "按商品代码的企业退税适用税基和覆盖率",
+    "可服务市场份额、企业订单、库存、有效产能及方案成本"
+  ],
+  "collection_log": [
+    {
+      "item": "2024全年销量与出口",
+      "status": "替代原机构页面取得并核验",
+      "note": "原链接访问失败，改用工信部机关司局同名发布页"
+    },
+    {
+      "item": "2024实际收入",
+      "status": "已定位国家统计局正确原链接",
+      "note": "此前尾号1958320链接无效，改为1958325；不沿用错误链接"
+    },
+    {
+      "item": "中国车辆收入弹性",
+      "status": "已取得原期刊摘要估计值与样本定义",
+      "note": "全文付费，未声称核验全部识别诊断"
+    },
+    {
+      "item": "海外需求",
+      "status": "已取得IEA原报告区域事实",
+      "note": "口径不匹配全国全车型出口，保留为机制证据"
+    },
+    {
+      "item": "2028购置税接续",
+      "status": "本轮未取得可确认安排",
+      "note": "保留假设分支，不将未查得等同确定没有政策"
+    },
+    {
+      "item": "2021全年汽车/新能源销量与出口",
+      "status": "已取得工信部2021年12月运行情况原文核验",
+      "note": "汽车2627.5、新能源352.1、出口201.5万辆点值一致；新能源出口31万辆取自工信部2021年汽车工业发展情况发布会"
+    },
+    {
+      "item": "2021实际收入",
+      "status": "已核对统计局居民收入8.1%实际增速",
+      "note": "使用统计局解读页面作为可访问链接；名义9.1%、实际8.1%一致"
+    }
+  ],
+  "parameter_authority": "economic-parameters.json是模型校准目标和网格唯一入口；external_income_elasticity仅记原研究事实"
+}

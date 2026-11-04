@@ -1,0 +1,16 @@
+{
+  "as_of": "2026-11-03",
+  "definition": "CAAM厂家总销量中已含出口，国内=厂家总销量-同体系出口；未取得进口衔接，不能称进口与出口或全部国内终端购买",
+  "caam_ytd_2025": {"nev_total":1122.8,"nev_export":175.8,"domestic":947.0,"period":"1—9月","source":"https://www.miit.gov.cn/jgsj/zbys/qcgy/art/2025/art_46ed5c0b309146be88656f94154f1078.html"},
+  "caam_ytd_2026": {"nev_total":1247.2,"nev_export":400.6,"domestic":846.6,"period":"1—9月","source":"https://www.miit.gov.cn/gxsj/tjfx/zbgy/qc/art/2026/art_8a878aeeb8a34a5b88975c5bbe94f7bf.html"},
+  "additional_public_evidence": [
+    {"source":"https://www.mofcom.gov.cn/cms_files/filemanager/policySummary/viewcore_c5f01aa2e1b24970a82098a26a3a55a8.html","fact":"2025-09-26公告，2026-01-01起对指定8703801090纯电动载人车辆实行出口许可证管理","role":"新增准入/执行机制证据，不能将许可要求直接视为出口减少某比例；与未来退税变化分别处理"},
+    {"source":"https://www.cada.cn/xinche/info_118_8923.html","fact":"协会贸易分析列2020新能源出口22.3万辆、2021年58.8万辆；明显不等于本项目2021厂家口径31万辆","role":"作为不能混接早期分支的具体核查证据，不写入CAAM训练历史，也不把两个数的差称为统计错误"},
+    {"source":"https://www.iea.org/reports/global-ev-outlook-2025/executive-summary","fact":"2024年中国约占全球电动乘用车出口40%，约125万辆；目的地日益分化","role":"独立终端/贸易机制背景，IEA电动乘用车口径，不并入CAAM全车型历史训练"},
+    {"source":"https://www.iea.org/reports/global-ev-outlook-2025/trends-in-the-electric-car-industry-3","fact":"2024出口增速放缓，中国品牌在中国电动车出口中的占比由2023年55%升至2024年70%","role":"品牌、目的地和海外产能变化说明结构不稳定；不能直接用该份额替代全车型出口份额"},
+    {"source":"https://www.iea.org/reports/global-ev-outlook-2026/manufacturing-and-trade","fact":"2025年中国电动乘用车出口翻倍，报告讨论国内竞争与海外利润机会","role":"解释出口快速增长阶段，非量化因果识别，未据此拟合出一个政策系数"},
+    {"source":"https://ec.europa.eu/commission/presscorner/api/files/document/print/en/ip_24_5589/IP_24_5589_EN.pdf","fact":"2024-10-29宣布对中国来源BEV实施正式反补贴税，为期五年","role":"政策适用范围分层：BEV、来源地、目的地，不把同一冲击施加于全部新能源和所有目的地"}
+  ],
+  "still_missing": ["目的地×BEV/PHEV连续月度出口与终端登记","同质产品出口价格、运输与关税构成","目的地库存和转口、海外工厂产销量","汇率与报价传递、企业退税覆盖及税基","国内批发/零售/上险/进口/库存的账户衔接"],
+  "no_fabrication": "未用份额倒推目的地真实值，未混入海关与CAAM异口径值，未把预测补项当实际。早期新能源出口搜索尚未取得可核原值，不倒造2015—2020分支。"
+}

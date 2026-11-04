@@ -1,0 +1,59 @@
+{
+  "pipeline": "completed",
+  "as_of": "2026-11-03",
+  "annual_original_years": 11,
+  "annual_paired_rows": 40,
+  "monthly_rows": 57,
+  "monthly_prediction_records": 1521,
+  "original_reproduced": [
+    {
+      "year": 2027,
+      "total": 2179.219705797201
+    },
+    {
+      "year": 2028,
+      "total": 2480.213264947118
+    }
+  ],
+  "candidate_2026_selection": {
+    "domestic": "trend_full",
+    "export": "trend_full",
+    "domestic_scores": [
+      {
+        "method": "seasonal",
+        "wape": 0.20471930993701953,
+        "n": 37
+      },
+      {
+        "method": "trend_half",
+        "wape": 0.15174581676683294,
+        "n": 37
+      },
+      {
+        "method": "trend_full",
+        "wape": 0.14772307495890993,
+        "n": 37
+      }
+    ],
+    "export_scores": [
+      {
+        "method": "seasonal",
+        "wape": 0.44475880936235884,
+        "n": 37
+      },
+      {
+        "method": "trend_half",
+        "wape": 0.35352367004536006,
+        "n": 37
+      },
+      {
+        "method": "trend_full",
+        "wape": 0.25190381224005004,
+        "n": 37
+      }
+    ]
+  },
+  "actual_2026_available": false,
+  "validation_status": "当前版本回顾性比较；原年度与月度适配分层，经济驱动因果与业务验收未完成",
+  "code_sha256": "13957452d49e6940f28b65f30df6a8e0235a82114b0d8876bf2f0c1cc0ca7f0b"
+}

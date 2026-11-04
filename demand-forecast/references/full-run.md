@@ -1,5 +1,7 @@
 # 完整运行与统一口径
 
+v1.1.0完整主案例改为 `python scripts/run_skill.py --industry nev --output-dir 新目录`，使用2015—2025完整11年总量史、独立分支校验及自动版本验证，见[11年模型](total11-model.md)。下文保留`run_full.py`分支引擎的输入与计算规则，不再把它的五年分支参照称为完整主总量。Windows“运行完整分析.cmd”已同步转到统一入口。
+
 ## 运行
 
 在Skill目录双击“运行完整分析.cmd”，或执行：

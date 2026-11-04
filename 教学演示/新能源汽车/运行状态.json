@@ -10,16 +10,33 @@
     "ok",
     "ok"
   ],
-  "history_rows": 5,
+  "history_rows": 11,
   "forecast_rows": 6,
   "grid_rows": 5832,
   "backtest_rows": 18,
   "fit": {
-    "share_logit_slope": 0.46758656569829526,
-    "domestic_reference_growth": 0.03768506791444664,
-    "income_reference_growth": 0.051,
-    "observations": 5,
-    "growth_observations": 4
+    "years": [
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "observations": 11,
+    "logit_slope": 0.44683243544401985,
+    "anchor": {
+      "year": 2026,
+      "auto": 3285.812092106883,
+      "nev": 1831.7000356252229
+    },
+    "domestic_weight": 0.6754933664936252,
+    "export_weight": 0.32450663350637476
   },
   "as_of": "2026-11-03",
   "parameters_unfilled": [],
@@ -47,12 +64,113 @@
     "planning_bridge.py": "892132870798b1d449be415ee07653fd9b47bb80e967bdc1a3ad7f1864709e88",
     "render_economic_report.py": "556a107defb8d88844079c645954e0f2334c2eb33308978695d064fbca425526",
     "run_full.py": "c2f14d95a45a7245777d0bba0096a5443dca089c313df058f4dc6f508538b478",
-    "run_skill.py": "0aa87fa4012553ae36a9ae97e0ed4269da528464668b628832debbf3b392bb4b",
+    "run_skill.py": "8783a92c2e53c414348e0292ca0ade9d022725ae6680babe29070a213298ae6f",
     "test_abs.py": "2b3e5a47b65397e2a7176aea136da13e241c176d927bc385dc17424e22426791",
+    "test_total11.py": "bc184f81d03c9421c76233cfa4dee0209d4616e439198894c967aaf04ec7e25e",
     "test_unified.py": "807816c195077dd6c36ef029efb95026d64b66c453887b1507478492425226d9",
-    "unified_report.py": "d386e1e860d1b9afee79b3d777ed487bf2deff3942916dd5c8aea25a43a51069"
+    "test_version_backtest.py": "77ac25e86d95a83cacc3660147b85f9c862a2d4bb3c57a6e96faad9fc618dd1f",
+    "total11_forecast.py": "12414e7d94795b159ee3b5351ed2fabef61555cf3185b9fa93217b87c4e49e3c",
+    "unified_report.py": "d386e1e860d1b9afee79b3d777ed487bf2deff3942916dd5c8aea25a43a51069",
+    "version_backtest.py": "13957452d49e6940f28b65f30df6a8e0235a82114b0d8876bf2f0c1cc0ca7f0b"
   },
   "input_sha256": "c244ce85af1d60765ad651d45e20b88e60a6c6c430ea33ccec4be28f7ed2656d",
   "template_sha256": "8a7fb261dd0f036d1dcc31052a30ca328c26b663645deb425cb0a8031d65dbd5",
-  "company_input_sha256": "c220ec5ddebddd41980c8e7b5208427a66bd7a9d0fbe0620d0e1743ad9a50dbd"
+  "company_input_sha256": "c220ec5ddebddd41980c8e7b5208427a66bd7a9d0fbe0620d0e1743ad9a50dbd",
+  "version_validation": {
+    "pipeline": "completed",
+    "as_of": "2026-11-03",
+    "annual_original_years": 11,
+    "annual_paired_rows": 40,
+    "monthly_rows": 57,
+    "monthly_prediction_records": 1521,
+    "original_reproduced": [
+      {
+        "year": 2027,
+        "total": 2179.219705797201
+      },
+      {
+        "year": 2028,
+        "total": 2480.213264947118
+      }
+    ],
+    "candidate_2026_selection": {
+      "domestic": "trend_full",
+      "export": "trend_full",
+      "domestic_scores": [
+        {
+          "method": "seasonal",
+          "wape": 0.20471930993701953,
+          "n": 37
+        },
+        {
+          "method": "trend_half",
+          "wape": 0.15174581676683294,
+          "n": 37
+        },
+        {
+          "method": "trend_full",
+          "wape": 0.14772307495890993,
+          "n": 37
+        }
+      ],
+      "export_scores": [
+        {
+          "method": "seasonal",
+          "wape": 0.44475880936235884,
+          "n": 37
+        },
+        {
+          "method": "trend_half",
+          "wape": 0.35352367004536006,
+          "n": 37
+        },
+        {
+          "method": "trend_full",
+          "wape": 0.25190381224005004,
+          "n": 37
+        }
+      ]
+    },
+    "actual_2026_available": false,
+    "validation_status": "当前版本回顾性比较；原年度与月度适配分层，经济驱动因果与业务验收未完成",
+    "code_sha256": "13957452d49e6940f28b65f30df6a8e0235a82114b0d8876bf2f0c1cc0ca7f0b"
+  },
+  "total11": {
+    "primary_history_rows": 11,
+    "primary_history_period": "2015—2025",
+    "fit": {
+      "years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "observations": 11,
+      "logit_slope": 0.44683243544401985,
+      "anchor": {
+        "year": 2026,
+        "auto": 3285.812092106883,
+        "nev": 1831.7000356252229
+      },
+      "domestic_weight": 0.6754933664936252,
+      "export_weight": 0.32450663350637476
+    },
+    "forecast_status": "总量参照与条件敏感性已重算；新增乘数及完整情景未经因果历史验证"
+  },
+  "branch_history_rows": 5,
+  "branch_fit": {
+    "share_logit_slope": 0.46758656569829526,
+    "domestic_reference_growth": 0.03768506791444664,
+    "income_reference_growth": 0.051,
+    "observations": 5,
+    "growth_observations": 4
+  },
+  "primary_model": "2015—2025完整11年总量参照；经济乘数为条件敏感性；分支独立对照"
 }
